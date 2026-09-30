@@ -9,7 +9,7 @@
     <!-- FontAwesome para íconos -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
-    <!-- Configuración personalizada de Tailwind usando variables CSS -->
+    <!-- Configuración personalizada de Tailwind -->
     <script>
         tailwind.config = {
             theme: {
@@ -27,18 +27,48 @@
     <!-- Estilos base y del editor -->
     <style id="editor-styles">
         :root {
-            /* Colores por defecto */
+            /* Colores y Tipografía por defecto */
             --color-primary: #0ea5e9;
             --color-primary-dark: #0284c7;
             --color-secondary: #0f172a;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
+        
+        body {
+            background-color: var(--bg-color) !important;
+            color: var(--text-color) !important;
+            font-family: var(--font-family) !important;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
         .hero-bg {
             background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
         }
         
-        /* Estilos visuales para cuando el Modo Edición está activado */
+        /* Lógica del Modo Mantenimiento */
+        #maintenance-screen {
+            display: none;
+            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 2rem;
+        }
+        body.maintenance-active #editable-content {
+            display: none !important;
+        }
+        body.maintenance-active #maintenance-screen {
+            display: flex !important;
+        }
+
+        /* Estilos visuales del Modo Edición */
         .editing-mode [contenteditable="true"] {
             outline: 2px dashed var(--color-primary);
             outline-offset: 4px;
@@ -65,7 +95,17 @@
         }
     </style>
 </head>
-<body class="font-sans text-slate-800 bg-slate-50 relative">
+<body class="relative">
+
+    <!-- PANTALLA DE MANTENIMIENTO -->
+    <div id="maintenance-screen">
+        <i class="fas fa-tools text-primary text-6xl mb-6 animate-bounce"></i>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Sitio en Mantenimiento</h1>
+        <p class="text-lg text-slate-300 max-w-lg mx-auto mb-8">Estamos actualizando nuestra página para ofrecerte un mejor servicio. Volveremos a estar en línea muy pronto.</p>
+        <a href="#" class="bg-primary hover:bg-primary_dark text-white px-8 py-3 rounded-full font-bold transition shadow-xl inline-flex items-center gap-2 editable-element">
+            <i class="fab fa-whatsapp text-xl"></i> Contáctanos por WhatsApp mientras tanto
+        </a>
+    </div>
 
     <!-- CONTENIDO PRINCIPAL DE LA PÁGINA (Editable) -->
     <div id="editable-content">
@@ -119,80 +159,80 @@
         </section>
 
         <!-- Especialidad / Nivel Componente -->
-        <section id="especialidad" class="py-20 bg-white">
+        <section id="especialidad" class="py-20" style="display: block;">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Especialistas en Microelectrónica</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Especialistas en Microelectrónica</h2>
                     <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-                    <p class="mt-6 text-lg text-slate-600 max-w-3xl mx-auto">
+                    <p class="mt-6 text-lg max-w-3xl mx-auto opacity-80">
                         Contamos con equipo de laboratorio avanzado (microscopios trinoculares, estaciones térmicas, osciloscopios) para detectar y reparar fallas que otros talleres declaran como "irreparables".
                     </p>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Tarjeta 1 -->
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition group bg-white bg-opacity-50 backdrop-blur-sm">
                         <div class="w-16 h-16 bg-slate-200 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition">
                             <i class="fas fa-fire text-2xl text-primary group-hover:text-white transition"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Reballing y Soldadura BGA</h3>
-                        <p class="text-slate-600">Reparación profesional de chips de video (GPU), procesadores y chipset mediante técnicas avanzadas de reballing para soldaduras fracturadas.</p>
+                        <h3 class="text-xl font-bold mb-3">Reballing y Soldadura BGA</h3>
+                        <p class="opacity-80">Reparación profesional de chips de video (GPU), procesadores y chipset mediante técnicas avanzadas de reballing para soldaduras fracturadas.</p>
                     </div>
                     <!-- Tarjeta 2 -->
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition group bg-white bg-opacity-50 backdrop-blur-sm">
                         <div class="w-16 h-16 bg-slate-200 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition">
                             <i class="fas fa-bolt text-2xl text-primary group-hover:text-white transition"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Solución a Cortocircuitos</h3>
-                        <p class="text-slate-600">Análisis térmico y esquemático para detección y reemplazo de capacitores, mosfets, resistencias y circuitos integrados (IC) en corto.</p>
+                        <h3 class="text-xl font-bold mb-3">Solución a Cortocircuitos</h3>
+                        <p class="opacity-80">Análisis térmico y esquemático para detección y reemplazo de capacitores, mosfets, resistencias y circuitos integrados (IC) en corto.</p>
                     </div>
                     <!-- Tarjeta 3 -->
-                    <div class="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition group bg-white bg-opacity-50 backdrop-blur-sm">
                         <div class="w-16 h-16 bg-slate-200 rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition">
                             <i class="fas fa-tint-slash text-2xl text-primary group-hover:text-white transition"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Daño por Líquidos</h3>
-                        <p class="text-slate-600">Limpieza ultrasónica de tarjetas madre, tratamiento contra sulfatación y reconstrucción de pistas y pads dañados por corrosión.</p>
+                        <h3 class="text-xl font-bold mb-3">Daño por Líquidos</h3>
+                        <p class="opacity-80">Limpieza ultrasónica de tarjetas madre, tratamiento contra sulfatación y reconstrucción de pistas y pads dañados por corrosión.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Otros Servicios Generales -->
-        <section id="servicios" class="py-20 bg-slate-50">
+        <section id="servicios" class="py-20" style="display: block; background: rgba(0,0,0,0.02);">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-4">Servicios Generales</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Servicios Generales</h2>
                     <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200">
+                    <div class="p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200 bg-white bg-opacity-70">
                         <i class="fas fa-desktop text-4xl text-slate-400 mb-4"></i>
                         <h4 class="font-bold text-lg mb-2">Cambio de Pantalla</h4>
-                        <p class="text-sm text-slate-500">Reemplazo de displays rotos, con líneas o manchas. Manejamos repuestos OEM y originales.</p>
+                        <p class="text-sm opacity-80">Reemplazo de displays rotos, con líneas o manchas. Manejamos repuestos OEM y originales.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200">
+                    <div class="p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200 bg-white bg-opacity-70">
                         <i class="fas fa-battery-three-quarters text-4xl text-slate-400 mb-4"></i>
                         <h4 class="font-bold text-lg mb-2">Baterías y Carga</h4>
-                        <p class="text-sm text-slate-500">Cambio de baterías infladas o agotadas, y reparación de centros de carga de la placa.</p>
+                        <p class="text-sm opacity-80">Cambio de baterías infladas o agotadas, y reparación de centros de carga de la placa.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200">
+                    <div class="p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200 bg-white bg-opacity-70">
                         <i class="fas fa-keyboard text-4xl text-slate-400 mb-4"></i>
                         <h4 class="font-bold text-lg mb-2">Teclados y Touchpad</h4>
-                        <p class="text-sm text-slate-500">Sustitución de teclados dañados por agua, teclas faltantes o problemas de flex.</p>
+                        <p class="text-sm opacity-80">Sustitución de teclados dañados por agua, teclas faltantes o problemas de flex.</p>
                     </div>
-                    <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200">
+                    <div class="p-6 rounded-xl shadow-sm hover:shadow-md transition text-center border border-slate-200 bg-white bg-opacity-70">
                         <i class="fas fa-memory text-4xl text-slate-400 mb-4"></i>
                         <h4 class="font-bold text-lg mb-2">Upgrades (SSD/RAM)</h4>
-                        <p class="text-sm text-slate-500">Dale nueva vida a tu equipo con un disco de estado sólido (SSD NVMe) y más memoria RAM.</p>
+                        <p class="text-sm opacity-80">Dale nueva vida a tu equipo con un disco de estado sólido (SSD NVMe) y más memoria RAM.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Banner de Confianza -->
-        <section class="bg-primary py-12 text-white">
+        <section id="banner-confianza" class="bg-primary py-12 text-white" style="display: block;">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                     <div>
@@ -258,26 +298,26 @@
                         </div>
                     </div>
                     
-                    <div class="lg:w-1/2 w-full bg-white rounded-2xl p-8 text-slate-800 shadow-2xl">
+                    <div class="lg:w-1/2 w-full bg-white rounded-2xl p-8 shadow-2xl" style="color: var(--text-color);">
                         <h3 class="text-2xl font-bold mb-6">Solicita un Presupuesto</h3>
                         <form class="space-y-4" onsubmit="event.preventDefault(); alert('¡Formulario enviado! (Modo demostración)');">
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Nombre</label>
-                                <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition">
+                                <label class="block text-sm font-medium mb-1 opacity-80">Nombre</label>
+                                <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition text-slate-800">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Teléfono</label>
-                                    <input type="tel" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition">
+                                    <label class="block text-sm font-medium mb-1 opacity-80">Teléfono</label>
+                                    <input type="tel" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition text-slate-800">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Marca</label>
-                                    <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition">
+                                    <label class="block text-sm font-medium mb-1 opacity-80">Marca</label>
+                                    <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition text-slate-800">
                                 </div>
                             </div>
                             <div>
-                                <label class="block text-sm font-medium text-slate-700 mb-1">Falla del equipo</label>
-                                <textarea rows="3" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition"></textarea>
+                                <label class="block text-sm font-medium mb-1 opacity-80">Falla del equipo</label>
+                                <textarea rows="3" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg outline-none transition text-slate-800"></textarea>
                             </div>
                             <button type="button" class="w-full bg-primary hover:bg-primary_dark text-white font-bold py-4 rounded-lg transition text-lg flex items-center justify-center gap-2 mt-2">
                                 <i class="fas fa-paper-plane"></i> Enviar Consulta
@@ -293,9 +333,9 @@
             <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
                 <div class="flex items-center gap-2">
                     <i class="fas fa-microchip text-slate-400"></i>
-                    <span class="font-bold">TechFix</span>
+                    <span class="font-bold text-slate-300">TechFix</span>
                 </div>
-                <p>&copy; 2024 TechFix - Especialistas en Microelectrónica.</p>
+                <p>&copy; <span contenteditable="false">2024</span> TechFix - Especialistas en Microelectrónica.</p>
                 <div class="flex gap-4">
                     <a href="#" class="hover:text-white transition"><i class="fab fa-facebook text-xl"></i></a>
                     <a href="#" class="hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
@@ -312,48 +352,95 @@
     <!-- ========================================== -->
     
     <!-- Botón Flotante para Abrir Editor -->
-    <button id="open-editor-btn" class="fixed bottom-6 right-6 bg-slate-800 text-white p-4 rounded-full shadow-2xl z-[100] hover:bg-slate-700 transition flex items-center justify-center" title="Editar Página">
+    <button id="open-editor-btn" onclick="openEditor()" class="fixed bottom-6 right-6 bg-slate-800 text-white p-4 rounded-full shadow-2xl hover:bg-slate-700 transition flex items-center justify-center cursor-pointer" title="Editar Página" style="font-family: sans-serif; z-index: 999999;">
         <i class="fas fa-magic text-xl"></i>
     </button>
 
     <!-- Panel del Editor -->
-    <div id="editor-ui" class="fixed bottom-6 right-6 bg-white p-6 rounded-2xl shadow-2xl border-2 border-slate-800 z-[101] flex-col gap-4 w-80" style="display: none;">
+    <div id="editor-ui" class="fixed bottom-6 right-6 bg-white p-6 rounded-2xl shadow-2xl border-2 border-slate-800 flex-col gap-4 w-80" style="display: none; font-family: sans-serif; color: #1e293b; z-index: 1000000;">
         <div class="flex justify-between items-center border-b pb-3 mb-2">
             <h3 class="font-bold text-lg text-slate-800"><i class="fas fa-tools text-primary mr-2"></i> Editor Web</h3>
-            <button id="close-editor-btn" class="text-slate-400 hover:text-red-500 transition"><i class="fas fa-times text-xl"></i></button>
+            <button id="close-editor-btn" onclick="closeEditor()" class="text-slate-400 hover:text-red-500 transition cursor-pointer p-1"><i class="fas fa-times text-xl"></i></button>
         </div>
         
-        <div class="space-y-4">
-            <!-- Controles de Color -->
+        <div class="space-y-4 max-h-[70vh] overflow-y-auto pr-2">
+            
+            <!-- Controles de Color y Tipografía -->
             <div>
-                <p class="text-xs font-bold text-slate-500 uppercase mb-2">Colores de la Marca</p>
-                <div class="flex gap-4">
-                    <div class="flex-1">
-                        <label class="block text-xs font-semibold mb-1">Principal</label>
-                        <input type="color" id="edit-primary" class="w-full h-10 rounded cursor-pointer border-0 p-0">
+                <p class="text-xs font-bold text-slate-500 uppercase mb-2">Apariencia General</p>
+                <div class="space-y-3">
+                    <div class="flex gap-2">
+                        <div class="flex-1">
+                            <label class="block text-[10px] font-semibold mb-1">C. Principal</label>
+                            <input type="color" id="edit-primary" class="w-full h-8 rounded cursor-pointer border-0 p-0">
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-[10px] font-semibold mb-1">C. Menú (Sec.)</label>
+                            <input type="color" id="edit-secondary" class="w-full h-8 rounded cursor-pointer border-0 p-0">
+                        </div>
                     </div>
-                    <div class="flex-1">
-                        <label class="block text-xs font-semibold mb-1">Fondo Menú</label>
-                        <input type="color" id="edit-secondary" class="w-full h-10 rounded cursor-pointer border-0 p-0">
+                    <div class="flex gap-2">
+                        <div class="flex-1">
+                            <label class="block text-[10px] font-semibold mb-1">Color de Fondo</label>
+                            <input type="color" id="edit-bg" class="w-full h-8 rounded cursor-pointer border-0 p-0">
+                        </div>
+                        <div class="flex-1">
+                            <label class="block text-[10px] font-semibold mb-1">Color Textos</label>
+                            <input type="color" id="edit-text" class="w-full h-8 rounded cursor-pointer border-0 p-0">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-semibold mb-1">Tipo de Letra</label>
+                        <select id="edit-font" class="w-full text-xs border border-slate-300 rounded p-1.5 outline-none">
+                            <option value='ui-sans-serif, system-ui, sans-serif'>Moderna (Sans-serif)</option>
+                            <option value='ui-serif, Georgia, Cambria, serif'>Elegante (Serif)</option>
+                            <option value='ui-monospace, SFMono-Regular, monospace'>Técnica (Monospace)</option>
+                        </select>
                     </div>
                 </div>
             </div>
 
             <hr class="border-slate-100">
 
-            <!-- Controles de Edición -->
+            <!-- Ocultar Secciones -->
             <div>
-                <p class="text-xs font-bold text-slate-500 uppercase mb-2">Contenido</p>
-                <button id="toggle-edit-mode" class="bg-slate-800 text-white px-4 py-3 rounded-lg font-bold hover:bg-slate-700 transition w-full text-sm flex items-center justify-center gap-2 shadow-md">
-                    <i class="fas fa-edit"></i> Activar Modo Edición
-                </button>
-                <p class="text-[11px] text-slate-500 mt-2 text-center leading-tight">Al activar, haz clic en textos para escribir, en imágenes para cambiar la foto, o doble clic en botones para cambiar su enlace (URL).</p>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-2">Secciones Visibles</p>
+                <div class="space-y-2 text-sm">
+                    <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-50 p-1 rounded">
+                        <input type="checkbox" id="toggle-sec-especialidad" class="w-4 h-4 text-primary" checked> Mostrar Especialidad
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-50 p-1 rounded">
+                        <input type="checkbox" id="toggle-sec-servicios" class="w-4 h-4 text-primary" checked> Mostrar Generales
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer hover:bg-slate-50 p-1 rounded">
+                        <input type="checkbox" id="toggle-sec-banner" class="w-4 h-4 text-primary" checked> Mostrar Confianza
+                    </label>
+                </div>
             </div>
 
             <hr class="border-slate-100">
 
-            <!-- Guardar / Exportar -->
+            <!-- Mantenimiento -->
             <div>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-2">Estado de la Web</p>
+                <label class="flex items-center gap-2 cursor-pointer p-2 bg-yellow-50 rounded border border-yellow-200 transition hover:bg-yellow-100">
+                    <input type="checkbox" id="toggle-maintenance" class="w-4 h-4 accent-yellow-600"> 
+                    <span class="text-sm font-bold text-yellow-800">Modo Mantenimiento</span>
+                </label>
+                <p class="text-[10px] text-yellow-700 mt-1 leading-tight">Oculta la página y muestra un aviso de "Vuelvo pronto".</p>
+            </div>
+
+            <hr class="border-slate-100">
+
+            <!-- Controles de Edición -->
+            <div>
+                <button id="toggle-edit-mode" class="bg-slate-800 text-white px-4 py-3 rounded-lg font-bold hover:bg-slate-700 transition w-full text-sm flex items-center justify-center gap-2 shadow-md">
+                    <i class="fas fa-edit"></i> Editar Textos / Fotos
+                </button>
+            </div>
+
+            <!-- Guardar / Exportar -->
+            <div class="pt-2">
                 <button id="export-btn" class="bg-green-600 text-white px-4 py-3 rounded-lg font-bold hover:bg-green-500 transition w-full text-sm flex items-center justify-center gap-2 shadow-md">
                     <i class="fas fa-download"></i> Descargar Web Final
                 </button>
@@ -361,8 +448,8 @@
 
             <!-- Resetear -->
             <div class="text-center pt-2">
-                <button id="reset-btn" class="text-red-500 hover:text-red-700 text-xs underline font-medium">
-                    Restaurar diseño original
+                <button id="reset-btn" class="text-red-500 hover:text-red-700 text-xs underline font-medium cursor-pointer">
+                    Restaurar todo a fábrica
                 </button>
             </div>
         </div>
@@ -370,197 +457,303 @@
 
     <!-- Script del Editor -->
     <script id="editor-script">
+        // Funciones de apertura inmediata
+        function openEditor() {
+            var ui = document.getElementById('editor-ui');
+            var btn = document.getElementById('open-editor-btn');
+            if (ui) ui.style.display = 'flex';
+            if (btn) btn.style.display = 'none';
+        }
+        function closeEditor() {
+            var ui = document.getElementById('editor-ui');
+            var btn = document.getElementById('open-editor-btn');
+            if (ui) ui.style.display = 'none';
+            if (btn) btn.style.display = 'flex';
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const root = document.documentElement;
             const mainContent = document.getElementById('editable-content');
             
-            // 1. Cargar estado guardado en el navegador (Local Storage)
-            if(localStorage.getItem('techfix_content')) {
-                mainContent.innerHTML = localStorage.getItem('techfix_content');
-            }
-            if(localStorage.getItem('techfix_primary')) {
-                root.style.setProperty('--color-primary', localStorage.getItem('techfix_primary'));
-                document.getElementById('edit-primary').value = localStorage.getItem('techfix_primary');
-            } else {
-                document.getElementById('edit-primary').value = '#0ea5e9'; // default
-            }
-            if(localStorage.getItem('techfix_secondary')) {
-                root.style.setProperty('--color-secondary', localStorage.getItem('techfix_secondary'));
-                document.getElementById('edit-secondary').value = localStorage.getItem('techfix_secondary');
-            } else {
-                document.getElementById('edit-secondary').value = '#0f172a'; // default
-            }
-
-            // 2. Mostrar / Ocultar Panel
-            document.getElementById('open-editor-btn').addEventListener('click', () => {
-                document.getElementById('editor-ui').style.display = 'flex';
-                document.getElementById('open-editor-btn').style.display = 'none';
-            });
-            document.getElementById('close-editor-btn').addEventListener('click', () => {
-                document.getElementById('editor-ui').style.display = 'none';
-                document.getElementById('open-editor-btn').style.display = 'flex';
-            });
-
-            // 3. Lógica de Colores
-            document.getElementById('edit-primary').addEventListener('input', (e) => {
-                root.style.setProperty('--color-primary', e.target.value);
-                localStorage.setItem('techfix_primary', e.target.value);
-            });
-            document.getElementById('edit-secondary').addEventListener('input', (e) => {
-                root.style.setProperty('--color-secondary', e.target.value);
-                localStorage.setItem('techfix_secondary', e.target.value);
-            });
-
-            // 4. Lógica del Modo Edición
-            let isEditing = false;
-            const toggleBtn = document.getElementById('toggle-edit-mode');
-            
-            // Función para cambiar imágenes
-            function handleImageClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const newUrl = prompt('Pega el enlace (URL) de la nueva imagen:', e.target.src);
-                if(newUrl) {
-                    e.target.src = newUrl;
-                    saveContent();
+            try {
+                // --- 1. CARGA DE CONFIGURACIÓN GUARDADA ---
+                if (localStorage.getItem('techfix_content') && mainContent) {
+                    mainContent.innerHTML = localStorage.getItem('techfix_content');
                 }
-            }
-            
-            // Función para cambiar enlaces (botones)
-            function handleLinkDblClick(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                const newHref = prompt('Ingresa el enlace (URL) al que debe llevar este botón (Ej: https://wa.me/123456789):', e.currentTarget.getAttribute('href') || '');
-                if(newHref !== null) {
-                    e.currentTarget.setAttribute('href', newHref);
-                    saveContent();
+                
+                // Asegurar IDs en secciones por si provienen de caché antiguo
+                const secEspecialidad = document.getElementById('especialidad');
+                const secServicios = document.getElementById('servicios');
+                let secBanner = document.getElementById('banner-confianza');
+                if (!secBanner && mainContent) {
+                    const fallbackBanner = mainContent.querySelector('section.bg-primary');
+                    if (fallbackBanner) {
+                        fallbackBanner.id = 'banner-confianza';
+                        secBanner = fallbackBanner;
+                    }
                 }
-            }
 
-            // Prevenir que los links te lleven a otra página mientras editas
-            function preventNav(e) {
-                e.preventDefault();
-            }
+                // Colores
+                const loadColor = (key, defaultVal, inputId, cssVar) => {
+                    const val = localStorage.getItem(key) || defaultVal;
+                    if (cssVar) root.style.setProperty(cssVar, val);
+                    const el = document.getElementById(inputId);
+                    if (el) el.value = val;
+                };
+                loadColor('techfix_primary', '#0ea5e9', 'edit-primary', '--color-primary');
+                loadColor('techfix_secondary', '#0f172a', 'edit-secondary', '--color-secondary');
+                loadColor('techfix_bg', '#f8fafc', 'edit-bg', '--bg-color');
+                loadColor('techfix_text', '#1e293b', 'edit-text', '--text-color');
 
-            toggleBtn.addEventListener('click', () => {
-                isEditing = !isEditing;
-                const textElements = mainContent.querySelectorAll('h1, h2, h3, h4, p, span, li');
-                const images = mainContent.querySelectorAll('img');
-                const links = mainContent.querySelectorAll('a');
+                // Tipografía
+                if (localStorage.getItem('techfix_font')) {
+                    const font = localStorage.getItem('techfix_font');
+                    root.style.setProperty('--font-family', font);
+                    const fontEl = document.getElementById('edit-font');
+                    if (fontEl) fontEl.value = font;
+                }
 
-                if(isEditing) {
-                    // ACTIVAR
-                    document.body.classList.add('editing-mode');
-                    toggleBtn.innerHTML = '<i class="fas fa-check"></i> Terminar Edición';
-                    toggleBtn.classList.replace('bg-slate-800', 'bg-blue-600');
-                    
-                    textElements.forEach(el => {
-                        // Evitar hacer editables los iconos de fontawesome para no romperlos
-                        if(!el.classList.contains('fas') && !el.classList.contains('fab')) {
-                            el.contentEditable = true;
+                // Mantenimiento
+                if (localStorage.getItem('techfix_maintenance') === 'true') {
+                    document.body.classList.add('maintenance-active');
+                    const maintCheck = document.getElementById('toggle-maintenance');
+                    if (maintCheck) maintCheck.checked = true;
+                }
+
+                // Secciones (sincronizar checks con la visibilidad)
+                const chkEsp = document.getElementById('toggle-sec-especialidad');
+                if (chkEsp && secEspecialidad) chkEsp.checked = secEspecialidad.style.display !== 'none';
+                
+                const chkServ = document.getElementById('toggle-sec-servicios');
+                if (chkServ && secServicios) chkServ.checked = secServicios.style.display !== 'none';
+                
+                const chkBan = document.getElementById('toggle-sec-banner');
+                if (chkBan && secBanner) chkBan.checked = secBanner.style.display !== 'none';
+
+
+                // --- 2. EVENTOS DE COLOR Y CONFIGURACIÓN ---
+                const setupInput = (inputId, cssVar, storageKey) => {
+                    const el = document.getElementById(inputId);
+                    if (!el) return;
+                    el.addEventListener('input', (e) => {
+                        root.style.setProperty(cssVar, e.target.value);
+                        localStorage.setItem(storageKey, e.target.value);
+                    });
+                };
+                setupInput('edit-primary', '--color-primary', 'techfix_primary');
+                setupInput('edit-secondary', '--color-secondary', 'techfix_secondary');
+                setupInput('edit-bg', '--bg-color', 'techfix_bg');
+                setupInput('edit-text', '--text-color', 'techfix_text');
+                
+                const fontSelect = document.getElementById('edit-font');
+                if (fontSelect) {
+                    fontSelect.addEventListener('change', (e) => {
+                        root.style.setProperty('--font-family', e.target.value);
+                        localStorage.setItem('techfix_font', e.target.value);
+                    });
+                }
+
+                // Eventos de Mantenimiento
+                const maintCheck = document.getElementById('toggle-maintenance');
+                if (maintCheck) {
+                    maintCheck.addEventListener('change', (e) => {
+                        if (e.target.checked) {
+                            document.body.classList.add('maintenance-active');
+                            localStorage.setItem('techfix_maintenance', 'true');
+                        } else {
+                            document.body.classList.remove('maintenance-active');
+                            localStorage.setItem('techfix_maintenance', 'false');
                         }
                     });
-                    
-                    images.forEach(img => {
-                        img.classList.add('editable-element');
-                        img.addEventListener('click', handleImageClick);
-                    });
-                    
-                    links.forEach(link => {
-                        link.classList.add('editable-element');
-                        link.addEventListener('click', preventNav);
-                        link.addEventListener('dblclick', handleLinkDblClick);
-                        link.contentEditable = true; // Permite cambiar el texto del botón
-                    });
-                } else {
-                    // DESACTIVAR
-                    document.body.classList.remove('editing-mode');
-                    toggleBtn.innerHTML = '<i class="fas fa-edit"></i> Activar Modo Edición';
-                    toggleBtn.classList.replace('bg-blue-600', 'bg-slate-800');
-                    
-                    textElements.forEach(el => el.contentEditable = false);
-                    
-                    images.forEach(img => {
-                        img.classList.remove('editable-element');
-                        img.removeEventListener('click', handleImageClick);
-                    });
-                    
-                    links.forEach(link => {
-                        link.classList.remove('editable-element');
-                        link.removeEventListener('click', preventNav);
-                        link.removeEventListener('dblclick', handleLinkDblClick);
-                        link.contentEditable = false;
-                    });
-                    
-                    saveContent(); // Guardar cambios al terminar
                 }
-            });
 
-            // 5. Función de guardado automático
-            function saveContent() {
-                // Clonamos para limpiar atributos temporales antes de guardar
-                const clone = mainContent.cloneNode(true);
-                clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-                clone.querySelectorAll('.editable-element').forEach(el => el.classList.remove('editable-element'));
-                localStorage.setItem('techfix_content', clone.innerHTML);
+                // Eventos de Secciones
+                const setupSectionToggle = (checkboxId, sectionId) => {
+                    const chk = document.getElementById(checkboxId);
+                    if (!chk) return;
+                    chk.addEventListener('change', (e) => {
+                        let sec = document.getElementById(sectionId);
+                        if (!sec && sectionId === 'banner-confianza' && mainContent) {
+                            sec = mainContent.querySelector('section.bg-primary');
+                            if (sec) sec.id = 'banner-confianza';
+                        }
+                        if (sec) {
+                            sec.style.display = e.target.checked ? 'block' : 'none';
+                            saveContent();
+                        }
+                    });
+                };
+                setupSectionToggle('toggle-sec-especialidad', 'especialidad');
+                setupSectionToggle('toggle-sec-servicios', 'servicios');
+                setupSectionToggle('toggle-sec-banner', 'banner-confianza');
+
+
+                // --- 3. MODO EDICIÓN (Textos y Fotos) ---
+                let isEditing = false;
+                const toggleBtn = document.getElementById('toggle-edit-mode');
+                
+                function handleImageClick(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const newUrl = prompt('Pega el enlace (URL) de la nueva imagen:', e.target.src);
+                    if (newUrl) {
+                        e.target.src = newUrl;
+                        saveContent();
+                    }
+                }
+                
+                function handleLinkDblClick(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const newHref = prompt('Ingresa el enlace (URL) al que debe llevar este botón:', e.currentTarget.getAttribute('href') || '');
+                    if (newHref !== null) {
+                        e.currentTarget.setAttribute('href', newHref);
+                        saveContent();
+                    }
+                }
+
+                function preventNav(e) { e.preventDefault(); }
+
+                if (toggleBtn) {
+                    toggleBtn.addEventListener('click', () => {
+                        isEditing = !isEditing;
+                        const editables = document.querySelectorAll('#editable-content h1, #editable-content h2, #editable-content h3, #editable-content h4, #editable-content p, #editable-content span, #editable-content li, #maintenance-screen h1, #maintenance-screen p');
+                        const images = document.querySelectorAll('#editable-content img');
+                        const links = document.querySelectorAll('#editable-content a, #maintenance-screen a');
+
+                        if (isEditing) {
+                            document.body.classList.add('editing-mode');
+                            toggleBtn.innerHTML = '<i class="fas fa-check"></i> Terminar Edición';
+                            toggleBtn.classList.replace('bg-slate-800', 'bg-blue-600');
+                            
+                            editables.forEach(el => {
+                                if (!el.classList.contains('fas') && !el.classList.contains('fab')) {
+                                    el.contentEditable = true;
+                                }
+                            });
+                            
+                            images.forEach(img => {
+                                img.classList.add('editable-element');
+                                img.addEventListener('click', handleImageClick);
+                            });
+                            
+                            links.forEach(link => {
+                                link.classList.add('editable-element');
+                                link.addEventListener('click', preventNav);
+                                link.addEventListener('dblclick', handleLinkDblClick);
+                                link.contentEditable = true;
+                            });
+                        } else {
+                            document.body.classList.remove('editing-mode');
+                            toggleBtn.innerHTML = '<i class="fas fa-edit"></i> Editar Textos / Fotos';
+                            toggleBtn.classList.replace('bg-blue-600', 'bg-slate-800');
+                            
+                            editables.forEach(el => el.contentEditable = false);
+                            images.forEach(img => {
+                                img.classList.remove('editable-element');
+                                img.removeEventListener('click', handleImageClick);
+                            });
+                            links.forEach(link => {
+                                link.classList.remove('editable-element');
+                                link.removeEventListener('click', preventNav);
+                                link.removeEventListener('dblclick', handleLinkDblClick);
+                                link.contentEditable = false;
+                            });
+                            saveContent();
+                        }
+                    });
+                }
+
+                // Autoguardado HTML
+                function saveContent() {
+                    if (mainContent) {
+                        const clone = mainContent.cloneNode(true);
+                        clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+                        clone.querySelectorAll('.editable-element').forEach(el => el.classList.remove('editable-element'));
+                        localStorage.setItem('techfix_content', clone.innerHTML);
+                    }
+                    
+                    const maint = document.getElementById('maintenance-screen');
+                    if (maint) {
+                        const maintClone = maint.cloneNode(true);
+                        maintClone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+                        localStorage.setItem('techfix_maintenance_html', maintClone.innerHTML);
+                    }
+                }
+                
+                if (localStorage.getItem('techfix_maintenance_html')) {
+                    const maint = document.getElementById('maintenance-screen');
+                    if (maint) maint.innerHTML = localStorage.getItem('techfix_maintenance_html');
+                }
+
+                if (mainContent) {
+                    mainContent.addEventListener('input', () => { if (isEditing) saveContent(); });
+                }
+                const maintScreen = document.getElementById('maintenance-screen');
+                if (maintScreen) {
+                    maintScreen.addEventListener('input', () => { if (isEditing) saveContent(); });
+                }
+
+
+                // --- 4. EXPORTAR Y RESET ---
+                const exportBtn = document.getElementById('export-btn');
+                if (exportBtn) {
+                    exportBtn.addEventListener('click', () => {
+                        if (isEditing) {
+                            alert("Por favor, termina la edición (clic en 'Terminar Edición') antes de descargar.");
+                            return;
+                        }
+                        saveContent(); 
+                        
+                        const htmlClone = document.documentElement.cloneNode(true);
+                        
+                        const toRemove = ['#editor-ui', '#open-editor-btn', '#editor-script'];
+                        toRemove.forEach(sel => {
+                            const el = htmlClone.querySelector(sel);
+                            if (el) el.remove();
+                        });
+
+                        const exportedStyles = htmlClone.querySelector('#editor-styles');
+                        if (exportedStyles) {
+                            exportedStyles.innerHTML = exportedStyles.innerHTML.replace(':root {', `:root {
+                    --color-primary: ${localStorage.getItem('techfix_primary') || '#0ea5e9'};
+                    --color-secondary: ${localStorage.getItem('techfix_secondary') || '#0f172a'};
+                    --bg-color: ${localStorage.getItem('techfix_bg') || '#f8fafc'};
+                    --text-color: ${localStorage.getItem('techfix_text') || '#1e293b'};
+                    --font-family: ${localStorage.getItem('techfix_font') || 'ui-sans-serif, system-ui, sans-serif'};
+                            `);
+                        }
+
+                        htmlClone.querySelector('body').classList.remove('editing-mode');
+                        htmlClone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+                        htmlClone.querySelectorAll('.editable-element').forEach(el => el.classList.remove('editable-element'));
+
+                        const finalHtml = '<!DOCTYPE html>\n' + htmlClone.outerHTML;
+                        const blob = new Blob([finalHtml], {type: 'text/html'});
+                        const url = URL.createObjectURL(blob);
+                        
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'pagina_reparacion_lista.html';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    });
+                }
+                
+                const resetBtn = document.getElementById('reset-btn');
+                if (resetBtn) {
+                    resetBtn.addEventListener('click', () => {
+                        if (confirm('¿Estás seguro que quieres borrar todos tus cambios y restaurar la página a fábrica?')) {
+                            localStorage.clear();
+                            location.reload();
+                        }
+                    });
+                }
+            } catch (err) {
+                console.error("Error inicializando editor:", err);
             }
-
-            // Autoguardado mientras se escribe texto
-            mainContent.addEventListener('input', () => {
-                if(isEditing) saveContent();
-            });
-
-            // 6. Exportar (Descargar la web limpia)
-            document.getElementById('export-btn').addEventListener('click', () => {
-                if(isEditing) {
-                    alert("Por favor, termina la edición (clic en 'Terminar Edición') antes de exportar.");
-                    return;
-                }
-                saveContent(); // Asegurarnos de tener la última versión
-                
-                const htmlClone = document.documentElement.cloneNode(true);
-                
-                // Limpiar la interfaz del editor del código clonado
-                const ui = htmlClone.querySelector('#editor-ui');
-                if(ui) ui.remove();
-                
-                const btn = htmlClone.querySelector('#open-editor-btn');
-                if(btn) btn.remove();
-                
-                const script = htmlClone.querySelector('#editor-script');
-                if(script) script.remove();
-                
-                const styles = htmlClone.querySelector('#editor-styles');
-                if(styles) styles.remove();
-
-                // Limpiar clases residuales por si acaso
-                htmlClone.querySelector('body').classList.remove('editing-mode');
-                htmlClone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-                htmlClone.querySelectorAll('.editable-element').forEach(el => el.classList.remove('editable-element'));
-
-                // Crear el archivo para descargar
-                const finalHtml = '<!DOCTYPE html>\n' + htmlClone.outerHTML;
-                const blob = new Blob([finalHtml], {type: 'text/html'});
-                const url = URL.createObjectURL(blob);
-                
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'pagina_reparacion_final.html';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            });
-            
-            // 7. Resetear
-            document.getElementById('reset-btn').addEventListener('click', () => {
-                if(confirm('¿Estás seguro que quieres borrar todos tus cambios y volver a la plantilla original?')) {
-                    localStorage.removeItem('techfix_content');
-                    localStorage.removeItem('techfix_primary');
-                    localStorage.removeItem('techfix_secondary');
-                    location.reload();
-                }
-            });
         });
     </script>
 </body>
