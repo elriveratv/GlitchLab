@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
-<head>
+<html lang="es" class="scroll-smooth" style="--color-primary: #12a1e2; --color-secondary: #0f172a; --bg-color: #f8fafc; --text-color: #1e293b;"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos de Electrónica y Microelectrónica | GlitchLab Academy</title>
@@ -8,308 +7,375 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Configuración personalizada de Tailwind usando variables CSS compartidas -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0ea5e9',
-                        primary_dark: '#0284c7',
-                        secondary: '#0f172a',
+                        primary: 'var(--color-primary)',
+                        primary_dark: 'var(--color-primary-dark)',
+                        secondary: 'var(--color-secondary)',
                     }
                 }
             }
         }
     </script>
-    <style>
+    
+    <style id="editor-styles">
+        :root {
+                    --color-primary: #12a1e2;
+                    --color-secondary: #0f172a;
+                    --bg-color: #f8fafc;
+                    --text-color: #1e293b;
+                    --font-family: ui-sans-serif, system-ui, sans-serif;
+                            
+            /* Colores compartidos con index.html */
+            --color-primary: #0ea5e9;
+            --color-primary-dark: #0284c7;
+            --color-secondary: #0f172a;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color) !important;
+            color: var(--text-color) !important;
+            font-family: var(--font-family) !important;
+            transition: background-color 0.3s, color 0.3s;
+        }
         .hero-pattern {
-            background-color: #0b1329;
-            background-image: radial-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px), radial-gradient(rgba(14, 165, 233, 0.1) 1px, #0b1329 1px);
+            background-color: var(--color-secondary);
+            background-image: radial-gradient(rgba(14, 165, 233, 0.15) 1px, transparent 1px), radial-gradient(rgba(14, 165, 233, 0.1) 1px, var(--color-secondary) 1px);
             background-size: 30px 30px;
             background-position: 0 0, 15px 15px;
         }
+        /* Estilos visuales del Modo Edición */
+        .editing-mode [contenteditable="true"] {
+            outline: 2px dashed var(--color-primary);
+            outline-offset: 4px;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.03);
+            transition: all 0.2s;
+            min-height: 1.5em;
+        }
+        .editing-mode [contenteditable="true"]:hover {
+            background: rgba(0,0,0,0.08);
+            cursor: text;
+        }
+        .editing-mode .editable-element {
+            outline: 4px dashed var(--color-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .editing-mode .editable-element:hover {
+            opacity: 0.8;
+            filter: brightness(1.1);
+        }
+        .editing-mode a {
+            cursor: pointer !important;
+        }
     </style>
-</head>
-<body class="font-sans text-slate-800 bg-slate-50">
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.relative{position:relative}.bottom-6{bottom:1.5rem}.right-6{right:1.5rem}.z-10{z-index:10}.z-40{z-index:40}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1{margin-left:0.25rem}.mr-2{margin-right:0.5rem}.mt-1{margin-top:0.25rem}.mt-16{margin-top:4rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-12{height:3rem}.h-20{height:5rem}.h-8{height:2rem}.max-h-\[70vh\]{max-height:70vh}.w-12{width:3rem}.w-24{width:6rem}.w-80{width:20rem}.w-fit{width:-moz-fit-content;width:fit-content}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-7xl{max-width:80rem}.max-w-xl{max-width:36rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-0{border-width:0px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-cyan-500\/40{border-color:rgb(6 182 212 / 0.4)}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.bg-blue-100{--tw-bg-opacity:1;background-color:rgb(219 234 254 / var(--tw-bg-opacity, 1))}.bg-cyan-600{--tw-bg-opacity:1;background-color:rgb(8 145 178 / var(--tw-bg-opacity, 1))}.bg-cyan-950\/80{background-color:rgb(8 51 68 / 0.8)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-green-600{--tw-bg-opacity:1;background-color:rgb(22 163 74 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-pink-100{--tw-bg-opacity:1;background-color:rgb(252 231 243 / var(--tw-bg-opacity, 1))}.bg-primary{background-color:var(--color-primary)}.bg-purple-100{--tw-bg-opacity:1;background-color:rgb(243 232 255 / var(--tw-bg-opacity, 1))}.bg-secondary{background-color:var(--color-secondary)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-slate-800\/60{background-color:rgb(30 41 59 / 0.6)}.bg-slate-800\/80{background-color:rgb(30 41 59 / 0.8)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-900\/80{background-color:rgb(15 23 42 / 0.8)}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-blue-600{--tw-bg-opacity:1;background-color:rgb(37 99 235 / var(--tw-bg-opacity, 1))}.bg-opacity-70{--tw-bg-opacity:0.7}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-slate-900{--tw-gradient-from:#0f172a var(--tw-gradient-from-position);--tw-gradient-to:rgb(15 23 42 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-slate-800{--tw-gradient-to:rgb(30 41 59 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #1e293b var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-slate-950{--tw-gradient-to:#020617 var(--tw-gradient-to-position)}.p-0{padding:0px}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.pb-24{padding-bottom:6rem}.pb-3{padding-bottom:0.75rem}.pr-2{padding-right:0.5rem}.pt-2{padding-top:0.5rem}.pt-32{padding-top:8rem}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-blue-800{--tw-text-opacity:1;color:rgb(30 64 175 / var(--tw-text-opacity, 1))}.text-cyan-300{--tw-text-opacity:1;color:rgb(103 232 249 / var(--tw-text-opacity, 1))}.text-cyan-400{--tw-text-opacity:1;color:rgb(34 211 238 / var(--tw-text-opacity, 1))}.text-cyan-600{--tw-text-opacity:1;color:rgb(8 145 178 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-indigo-600{--tw-text-opacity:1;color:rgb(79 70 229 / var(--tw-text-opacity, 1))}.text-pink-600{--tw-text-opacity:1;color:rgb(219 39 119 / var(--tw-text-opacity, 1))}.text-pink-800{--tw-text-opacity:1;color:rgb(157 23 77 / var(--tw-text-opacity, 1))}.text-primary{color:var(--color-primary)}.text-purple-800{--tw-text-opacity:1;color:rgb(107 33 168 / var(--tw-text-opacity, 1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-400{--tw-text-opacity:1;color:rgb(250 204 21 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.opacity-80{opacity:0.8}.opacity-90{opacity:0.9}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-emerald-500\/30{--tw-shadow-color:rgb(16 185 129 / 0.3);--tw-shadow:var(--tw-shadow-colored)}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-primary:hover{border-color:var(--color-primary)}.hover\:bg-emerald-600:hover{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.hover\:bg-green-500:hover{--tw-bg-opacity:1;background-color:rgb(34 197 94 / var(--tw-bg-opacity, 1))}.hover\:bg-primary_dark:hover{background-color:var(--color-primary-dark)}.hover\:bg-slate-700:hover{--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.hover\:text-primary:hover{color:var(--color-primary)}.hover\:text-red-500:hover{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.hover\:text-red-700:hover{--tw-text-opacity:1;color:rgb(185 28 28 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}@media (min-width: 640px){.sm\:w-auto{width:auto}.sm\:flex-row{flex-direction:row}.sm\:p-14{padding:3.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-6xl{font-size:3.75rem;line-height:1}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}}@media (min-width: 1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}</style></head>
+<body class="relative">
 
-    <!-- Navegación -->
-    <nav class="bg-secondary text-white fixed w-full z-50 shadow-lg border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logotipo -->
-                <a href="index.html" class="flex items-center gap-2">
-                    <i class="fas fa-microchip text-primary text-3xl"></i>
-                    <span class="font-bold text-2xl tracking-wider">Glitch<span class="text-primary">Lab</span></span>
-                    <span class="text-[10px] bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded font-mono uppercase ml-1">Academy</span>
-                </a>
+    <!-- CONTENIDO PRINCIPAL (Editable) -->
+    <div id="editable-content">
+        <!-- Navegación -->
+        <nav class="bg-secondary text-white fixed w-full z-40 shadow-lg border-b border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    <!-- Logotipo -->
+                    <a href="index.html" class="flex items-center gap-2">
+                        <i class="fas fa-microchip text-primary text-3xl"></i>
+                        <span class="font-bold text-2xl tracking-wider">Glitch<span class="text-primary">Lab</span></span>
+                        <span class="text-[10px] bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded font-mono uppercase ml-1">Academy</span>
+                    </a>
+                    
+                    <!-- Links Menú -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="index.html" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-1.5">
+                            <i class="fas fa-tools text-primary text-sm"></i> Taller de Reparaciones
+                        </a>
+                        <a href="#temario" class="hover:text-primary font-medium transition">Niveles y Temario</a>
+                        <a href="#laboratorio" class="hover:text-primary font-medium transition">El Laboratorio</a>
+                        <a href="#inscripcion" class="bg-primary hover:bg-primary_dark px-6 py-2.5 rounded-full font-bold transition shadow-lg text-white flex items-center gap-2">
+                            <i class="fab fa-whatsapp text-lg"></i> Inscribirme Ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-pattern pt-32 pb-24 text-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-mono uppercase tracking-wider mb-6">
+                        <i class="fas fa-bolt text-yellow-400"></i> Formación Práctica y Profesional
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-black leading-tight mb-6 tracking-tight">
+                        Aprende Electrónica y Microelectrónica <br>
+                        <span class="text-primary">Desde Cero hasta Nivel Experto</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
+                        Aprende a diagnosticar y revivir tarjetas madre de laptops, interpretar diagramas esquemáticos y dominar la micro-soldadura SMD y BGA. 100% práctico en laboratorio con fallas reales.
+                    </p>
+
+                    <!-- Botones Acción -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <a href="#inscripcion" class="w-full sm:w-auto bg-primary hover:bg-primary_dark text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl flex items-center justify-center gap-3">
+                            <i class="fab fa-whatsapp text-2xl"></i> Solicitar Fechas y Costos
+                        </a>
+                        <a href="#temario" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 px-8 py-4 rounded-full font-bold text-lg transition">
+                            Ver los 4 Niveles
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Métricas / Puntos Clave -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-5xl mx-auto">
+                    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
+                        <i class="fas fa-layer-group text-3xl text-primary mb-2"></i>
+                        <h4 class="font-bold text-xl text-white">4 Niveles</h4>
+                        <p class="text-slate-400 text-xs mt-1">De principiante a avanzado</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
+                        <i class="fas fa-microscope text-3xl text-primary mb-2"></i>
+                        <h4 class="font-bold text-xl text-white">Práctica Real</h4>
+                        <p class="text-slate-400 text-xs mt-1">Con equipo de microelectrónica</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
+                        <i class="fas fa-users text-3xl text-primary mb-2"></i>
+                        <h4 class="font-bold text-xl text-white">Grupos Reducidos</h4>
+                        <p class="text-slate-400 text-xs mt-1">Atención personalizada (4-6)</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
+                        <i class="fas fa-comments text-3xl text-primary mb-2"></i>
+                        <h4 class="font-bold text-xl text-white">Soporte Continuo</h4>
+                        <p class="text-slate-400 text-xs mt-1">Asesoría post-curso</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ruta de Aprendizaje / Temario -->
+        <section id="temario" class="py-24" style="background: transparent;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold text-sm tracking-widest uppercase">Plan de Estudios Integral</span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold mb-4">Niveles de Formación</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
+                    <p class="opacity-80 mt-4 max-w-2xl mx-auto">Diseñado paso a paso para que cualquier persona sin conocimientos previos termine reparando a nivel microelectrónico.</p>
+                </div>
+
+                <div class="space-y-8 max-w-5xl mx-auto">
+                    
+                    <!-- Nivel 1 -->
+                    <div class="p-8 rounded-2xl border border-slate-300 hover:border-primary transition group shadow-sm hover:shadow-xl bg-white bg-opacity-70 backdrop-blur-sm">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                            <div class="flex items-center gap-4">
+                                <span class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center font-black text-xl shrink-0">1</span>
+                                <div>
+                                    <span class="text-xs font-bold text-primary tracking-wider uppercase">Nivel Básico</span>
+                                    <h3 class="text-2xl font-bold">Fundamentos de Electrónica y Componentes Pasivos</h3>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 w-fit">
+                                <i class="fas fa-check-circle"></i> Sin experiencia previa
+                            </span>
+                        </div>
+                        <p class="opacity-80 mb-6">Aprende los principios fundamentales de la electricidad y el funcionamiento interno de los componentes que componen cualquier circuito electrónico.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm opacity-90">
+                            <div class="flex items-start gap-2.5"><i class="fas fa-bolt text-primary mt-1"></i> <span>Voltaje, Corriente, Resistencia y Ley de Ohm aplicada.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-check text-primary mt-1"></i> <span>Identificación y medición de Resistencias SMD, Capacitores y Bobinas.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-check text-primary mt-1"></i> <span>Diodos rectificadores, Diodos Zener, LEDs y Diodos Schottky.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-tachometer-alt text-primary mt-1"></i> <span>Manejo profesional del multímetro (escala de diodos, continuidad y resistencia).</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-plug text-primary mt-1"></i> <span>Uso de fuente de poder regulada y técnica de inyección segura de voltaje.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-search text-primary mt-1"></i> <span>Localización de componentes en cortocircuito y fuga de corriente.</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Nivel 2 -->
+                    <div class="p-8 rounded-2xl border border-slate-300 hover:border-primary transition group shadow-sm hover:shadow-xl bg-white bg-opacity-70 backdrop-blur-sm">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                            <div class="flex items-center gap-4">
+                                <span class="w-12 h-12 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-black text-xl shrink-0">2</span>
+                                <div>
+                                    <span class="text-xs font-bold text-cyan-600 tracking-wider uppercase">Nivel Intermedio</span>
+                                    <h3 class="text-2xl font-bold">Semiconductores y Fuentes Conmutadas (PWM)</h3>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 w-fit">
+                                <i class="fas fa-microchip"></i> Circuitos Activos
+                            </span>
+                        </div>
+                        <p class="opacity-80 mb-6">Comprende cómo los transistores y circuitos integrados controlan y modulan la energía en los equipos modernos.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm opacity-90">
+                            <div class="flex items-start gap-2.5"><i class="fas fa-check text-cyan-600 mt-1"></i> <span>Transistores BJT y MOSFETs (Canal N y Canal P: Gate, Drain, Source).</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-check text-cyan-600 mt-1"></i> <span>Condiciones de saturación, corte y gatillado de MOSFETs.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-check text-cyan-600 mt-1"></i> <span>Reguladores lineales LDO vs. Fuentes conmutadas Step-Down (Buck Converters).</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-wave-square text-cyan-600 mt-1"></i> <span>Circuitos integrados controladores PWM (Generación de pulsos y switcheo).</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-tv text-cyan-600 mt-1"></i> <span>Uso básico de osciloscopio: verificar rizado, oscilación y señales de reloj.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-shield-alt text-cyan-600 mt-1"></i> <span>Circuitos de protección contra sobrevoltaje e inversión de polaridad.</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Nivel 3 -->
+                    <div class="p-8 rounded-2xl border border-slate-300 hover:border-primary transition group shadow-sm hover:shadow-xl bg-white bg-opacity-70 backdrop-blur-sm">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                            <div class="flex items-center gap-4">
+                                <span class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-xl shrink-0">3</span>
+                                <div>
+                                    <span class="text-xs font-bold text-indigo-600 tracking-wider uppercase">Nivel Avanzado</span>
+                                    <h3 class="text-2xl font-bold">Arquitectura y Diagnóstico de Tarjetas Madre de Laptops</h3>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 w-fit">
+                                <i class="fas fa-laptop-code"></i> Especialidad Laptop
+                            </span>
+                        </div>
+                        <p class="opacity-80 mb-6">Aprende a rastrear fallas como un verdadero ingeniero usando diagramas esquemáticos y la secuencia cronológica de encendido.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm opacity-90">
+                            <div class="flex items-start gap-2.5"><i class="fas fa-project-diagram text-indigo-600 mt-1"></i> <span>Lectura e interpretación de diagramas esquemáticos y software Boardview.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-power-off text-indigo-600 mt-1"></i> <span>Secuencia de encendido (Power Sequence: 19V, 3.3V/5V Always, RAM, CPU VCore).</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-search-plus text-indigo-600 mt-1"></i> <span>Diagnóstico de laptops que no encienden, sin consumo (0.00A) o consumos anómalos.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-desktop text-indigo-600 mt-1"></i> <span>Diagnóstico de laptops que encienden pero no dan video (sin señal de pantalla).</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-memory text-indigo-600 mt-1"></i> <span>Programación de memorias BIOS (SPI Flash) con programadores CH341A / RT809.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-microchip text-indigo-600 mt-1"></i> <span>El controlador embebido KBC (Super I/O): función, señales de reset y programación.</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Nivel 4 -->
+                    <div class="p-8 rounded-2xl border border-slate-300 hover:border-primary transition group shadow-sm hover:shadow-xl bg-white bg-opacity-70 backdrop-blur-sm">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                            <div class="flex items-center gap-4">
+                                <span class="w-12 h-12 rounded-xl bg-slate-900 text-cyan-400 flex items-center justify-center font-black text-xl shrink-0"><i class="fas fa-fire"></i></span>
+                                <div>
+                                    <span class="text-xs font-bold text-pink-600 tracking-wider uppercase">Nivel Máster</span>
+                                    <h3 class="text-2xl font-bold">Técnicas de Micro-soldadura y Reballing BGA</h3>
+                                </div>
+                            </div>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-100 text-pink-800 w-fit">
+                                <i class="fas fa-microscope"></i> Alta Precisión
+                            </span>
+                        </div>
+                        <p class="opacity-80 mb-6">Destreza manual quirúrgica para soldar componentes microscópicos bajo microscopio trinocular.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm opacity-90">
+                            <div class="flex items-start gap-2.5"><i class="fas fa-temperature-high text-pink-600 mt-1"></i> <span>Calibración de aire caliente, flux profesional y aleaciones de estaño (Sn/Pb vs Lead-Free).</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-compress-arrows-alt text-pink-600 mt-1"></i> <span>Soldadura y desoldadura de componentes 0201, 0402 y circuitos QFN sin pines expuestos.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-bezier-curve text-pink-600 mt-1"></i> <span>Reconstrucción de pistas microscópicas arrancadas y puentes (jumpers) finos.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-sun text-pink-600 mt-1"></i> <span>Curado con máscara UV y luz ultravioleta para aislar pistas reparadas.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-dice-d6 text-pink-600 mt-1"></i> <span>Fundamentos de Reballing BGA: stencils de calor directo, colocación de esferas y reflujo.</span></div>
+                            <div class="flex items-start gap-2.5"><i class="fas fa-shield-virus text-pink-600 mt-1"></i> <span>Técnicas para retirar resina epóxica (underfill) sin dañar la tarjeta madre.</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- El Laboratorio -->
+        <section id="laboratorio" class="py-20 bg-secondary text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-primary font-bold text-sm tracking-widest uppercase">Equipamiento Profesional</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Aprende con las mejores herramientas</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
+                    <p class="text-slate-400 mt-4 max-w-2xl mx-auto">En GlitchLab no usamos herramientas genéricas. Cada estación cuenta con el equipamiento necesario para que sientas cómo se trabaja en un centro de reparación real.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
+                        <i class="fas fa-microscope text-primary text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Microscopios Trinoculares</h3>
+                        <p class="text-slate-400 text-sm">Ópticas profesionales con cámara HDMI para visualizar soldaduras en pantalla gigante y trabajar con total nitidez.</p>
+                    </div>
+                    <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
+                        <i class="fas fa-temperature-high text-primary text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Estaciones Térmicas JBC / Quick</h3>
+                        <p class="text-slate-400 text-sm">Control térmico de precisión milimétrica para no estresar el silicio ni levantar pistas por exceso de calor.</p>
+                    </div>
+                    <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
+                        <i class="fas fa-satellite-dish text-primary text-4xl mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">Cámaras Térmicas y Osciloscopios</h3>
+                        <p class="text-slate-400 text-sm">Tecnología de detección de puntos calientes y osciloscopios de 100MHz para corroborar el estado de cada integrado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inscripción y Contacto -->
+        <section id="inscripcion" class="py-24" style="background: transparent;">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 rounded-3xl p-8 sm:p-14 text-white shadow-2xl border border-slate-700 relative overflow-hidden text-center">
+                    
+                    <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-mono uppercase mb-6">
+                        <i class="fas fa-calendar-alt"></i> Próximas Fechas Abiertas
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-extrabold mb-6">¿Listo para dar el siguiente paso?</h2>
+                    <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
+                        Contáctanos directamente por WhatsApp para consultar las fechas del próximo grupo, horarios disponibles, costos e inscribirte.
+                    </p>
+
+                    <div class="bg-slate-800/80 rounded-2xl p-6 max-w-xl mx-auto border border-slate-700 mb-8 text-left text-sm space-y-2">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt text-primary text-lg"></i>
+                            <span><strong>Lugar:</strong> Calle Uruapan #2, Villas de la Paz, 63198 Tepic, Nayarit.</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-clock text-primary text-lg"></i>
+                            <span><strong>Horarios:</strong> Modalidades entre semana y sabatinos intensivos.</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-certificate text-yellow-400 text-lg"></i>
+                            <span><strong>Incluye:</strong> Constancia de participación y acceso a comunidad privada.</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA WhatsApp -->
+                    <a href="https://wa.me/5212345678900?text=Hola%20GlitchLab!%20Me%20interesa%20recibir%20información,%20fechas%20y%20costos%20sobre%20los%20Cursos%20de%20Electrónica%20y%20Microelectrónica." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xl px-10 py-5 rounded-full transition shadow-xl shadow-emerald-500/30 hover:scale-105 transform">
+                        <i class="fab fa-whatsapp text-3xl"></i> Pedir Información por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-950 py-10 border-t border-slate-800 text-center text-slate-500 text-sm">
+            <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-microchip text-primary"></i>
+                    <span class="font-bold text-white text-base">Glitch<span class="text-primary">Lab</span> Academy</span>
+                </div>
                 
-                <!-- Links Menú -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-slate-300 hover:text-white font-medium transition flex items-center gap-1.5">
-                        <i class="fas fa-tools text-primary text-sm"></i> Taller de Reparaciones
-                    </a>
-                    <a href="#temario" class="hover:text-primary font-medium transition">Niveles y Temario</a>
-                    <a href="#laboratorio" class="hover:text-primary font-medium transition">El Laboratorio</a>
-                    <a href="#inscripcion" class="bg-primary hover:bg-primary_dark px-6 py-2.5 rounded-full font-bold transition shadow-lg shadow-primary/20 text-white flex items-center gap-2">
-                        <i class="fab fa-whatsapp text-lg"></i> Inscribirme Ahora
-                    </a>
+                <div class="flex gap-6 text-sm">
+                    <a href="index.html" class="hover:text-primary transition">Taller de Reparación de Laptops</a>
+                    <a href="#temario" class="hover:text-primary transition">Temario de Cursos</a>
+                    <a href="index.html#contacto" class="hover:text-primary transition">Contacto</a>
                 </div>
+
+                <p>© 2026 GlitchLab. Todos los derechos reservados.</p>
             </div>
-        </div>
-    </nav>
+        </footer>
+    </div>
+    <!-- FIN DEL CONTENIDO PRINCIPAL -->
 
-    <!-- Hero Section -->
-    <section class="hero-pattern pt-32 pb-24 text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 text-xs font-mono uppercase tracking-wider mb-6">
-                    <i class="fas fa-bolt text-yellow-400"></i> Formación Práctica y Profesional
-                </div>
-                <h1 class="text-4xl sm:text-6xl font-black leading-tight mb-6 tracking-tight">
-                    Aprende Electrónica y Microelectrónica <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-cyan-400 to-blue-400">Desde Cero hasta Nivel Experto</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-                    Aprende a diagnosticar y revivir tarjetas madre de laptops, interpretar diagramas esquemáticos y dominar la micro-soldadura SMD y BGA. 100% práctico en laboratorio con fallas reales.
-                </p>
 
-                <!-- Botones Acción -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="#inscripcion" class="w-full sm:w-auto bg-primary hover:bg-primary_dark text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-xl shadow-primary/30 flex items-center justify-center gap-3">
-                        <i class="fab fa-whatsapp text-2xl"></i> Solicitar Fechas y Costos
-                    </a>
-                    <a href="#temario" class="w-full sm:w-auto bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 px-8 py-4 rounded-full font-bold text-lg transition">
-                        Ver los 4 Niveles
-                    </a>
-                </div>
-            </div>
+    <!-- ========================================== -->
+    <!-- INTERFAZ DEL EDITOR CMS (Sincronizado)     -->
+    <!-- ========================================== -->
+    
+    <!-- Botón Flotante para Abrir Editor -->
+    
 
-            <!-- Métricas / Puntos Clave -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-5xl mx-auto">
-                <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
-                    <i class="fas fa-layer-group text-3xl text-primary mb-2"></i>
-                    <h4 class="font-bold text-xl text-white">4 Niveles</h4>
-                    <p class="text-slate-400 text-xs mt-1">De principiante a avanzado</p>
-                </div>
-                <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
-                    <i class="fas fa-microscope text-3xl text-cyan-400 mb-2"></i>
-                    <h4 class="font-bold text-xl text-white">Práctica Real</h4>
-                    <p class="text-slate-400 text-xs mt-1">Con equipo de microelectrónica</p>
-                </div>
-                <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
-                    <i class="fas fa-users text-3xl text-primary mb-2"></i>
-                    <h4 class="font-bold text-xl text-white">Grupos Reducidos</h4>
-                    <p class="text-slate-400 text-xs mt-1">Atención personalizada (4-6)</p>
-                </div>
-                <div class="bg-slate-900/80 border border-slate-800 p-5 rounded-2xl text-center">
-                    <i class="fas fa-comments text-3xl text-cyan-400 mb-2"></i>
-                    <h4 class="font-bold text-xl text-white">Soporte Continuo</h4>
-                    <p class="text-slate-400 text-xs mt-1">Asesoría post-curso</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Panel del Editor -->
+    
 
-    <!-- Ruta de Aprendizaje / Temario -->
-    <section id="temario" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-primary font-bold text-sm tracking-widest uppercase">Plan de Estudios Integral</span>
-                <h2 class="text-3xl sm:text-5xl font-extrabold text-secondary mt-2 mb-4">Niveles de Formación</h2>
-                <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-                <p class="text-slate-600 mt-4 max-w-2xl mx-auto">Diseñado paso a paso para que cualquier persona sin conocimientos previos termine reparando a nivel microelectrónico.</p>
-            </div>
+    <!-- Script del Editor -->
+    
 
-            <div class="space-y-8 max-w-5xl mx-auto">
-                
-                <!-- Nivel 1 -->
-                <div class="bg-slate-50 border-2 border-slate-200/80 rounded-2xl p-8 hover:border-primary transition group shadow-sm hover:shadow-xl">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <div class="flex items-center gap-4">
-                            <span class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center font-black text-xl shrink-0">1</span>
-                            <div>
-                                <span class="text-xs font-bold text-primary tracking-wider uppercase">Nivel Básico</span>
-                                <h3 class="text-2xl font-bold text-secondary">Fundamentos de Electrónica y Componentes Pasivos</h3>
-                            </div>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 w-fit">
-                            <i class="fas fa-check-circle"></i> Sin experiencia previa
-                        </span>
-                    </div>
-                    <p class="text-slate-600 mb-6">Aprende los principios fundamentales de la electricidad y el funcionamiento interno de los componentes que componen cualquier circuito electrónico.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
-                        <div class="flex items-start gap-2.5"><i class="fas fa-bolt text-primary mt-1"></i> <span>Voltaje, Corriente, Resistencia y Ley de Ohm aplicada.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-check text-primary mt-1"></i> <span>Identificación y medición de Resistencias SMD, Capacitores y Bobinas.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-check text-primary mt-1"></i> <span>Diodos rectificadores, Diodos Zener, LEDs y Diodos Schottky.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-tachometer-alt text-primary mt-1"></i> <span>Manejo profesional del multímetro (escala de diodos, continuidad y resistencia).</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-plug text-primary mt-1"></i> <span>Uso de fuente de poder regulada y técnica de inyección segura de voltaje.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-search text-primary mt-1"></i> <span>Localización de componentes en cortocircuito y fuga de corriente.</span></div>
-                    </div>
-                </div>
 
-                <!-- Nivel 2 -->
-                <div class="bg-slate-50 border-2 border-slate-200/80 rounded-2xl p-8 hover:border-primary transition group shadow-sm hover:shadow-xl">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <div class="flex items-center gap-4">
-                            <span class="w-12 h-12 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-black text-xl shrink-0">2</span>
-                            <div>
-                                <span class="text-xs font-bold text-cyan-600 tracking-wider uppercase">Nivel Intermedio</span>
-                                <h3 class="text-2xl font-bold text-secondary">Semiconductores y Fuentes Conmutadas (PWM)</h3>
-                            </div>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-800 w-fit">
-                            <i class="fas fa-microchip"></i> Circuitos Activos
-                        </span>
-                    </div>
-                    <p class="text-slate-600 mb-6">Comprende cómo los transistores y circuitos integrados controlan y modulan la energía en los equipos modernos.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
-                        <div class="flex items-start gap-2.5"><i class="fas fa-check text-cyan-600 mt-1"></i> <span>Transistores BJT y MOSFETs (Canal N y Canal P: Gate, Drain, Source).</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-check text-cyan-600 mt-1"></i> <span>Condiciones de saturación, corte y gatillado de MOSFETs.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-check text-cyan-600 mt-1"></i> <span>Reguladores lineales LDO vs. Fuentes conmutadas Step-Down (Buck Converters).</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-wave-square text-cyan-600 mt-1"></i> <span>Circuitos integrados controladores PWM (Generación de pulsos y switcheo).</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-tv text-cyan-600 mt-1"></i> <span>Uso básico de osciloscopio: verificar rizado, oscilación y señales de reloj.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-shield-alt text-cyan-600 mt-1"></i> <span>Circuitos de protección contra sobrevoltaje e inversión de polaridad.</span></div>
-                    </div>
-                </div>
-
-                <!-- Nivel 3 -->
-                <div class="bg-slate-50 border-2 border-slate-200/80 rounded-2xl p-8 hover:border-primary transition group shadow-sm hover:shadow-xl">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <div class="flex items-center gap-4">
-                            <span class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-xl shrink-0">3</span>
-                            <div>
-                                <span class="text-xs font-bold text-indigo-600 tracking-wider uppercase">Nivel Avanzado</span>
-                                <h3 class="text-2xl font-bold text-secondary">Arquitectura y Diagnóstico de Tarjetas Madre de Laptops</h3>
-                            </div>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 w-fit">
-                            <i class="fas fa-laptop-code"></i> Especialidad Laptop
-                        </span>
-                    </div>
-                    <p class="text-slate-600 mb-6">Aprende a rastrear fallas como un verdadero ingeniero usando diagramas esquemáticos y la secuencia cronológica de encendido.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
-                        <div class="flex items-start gap-2.5"><i class="fas fa-project-diagram text-indigo-600 mt-1"></i> <span>Lectura e interpretación de diagramas esquemáticos y software Boardview.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-power-off text-indigo-600 mt-1"></i> <span>Secuencia de encendido (Power Sequence: 19V, 3.3V/5V Always, RAM, CPU VCore).</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-search-plus text-indigo-600 mt-1"></i> <span>Diagnóstico de laptops que no encienden, sin consumo (0.00A) o consumos anómalos.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-desktop text-indigo-600 mt-1"></i> <span>Diagnóstico de laptops que encienden pero no dan video (sin señal de pantalla).</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-memory text-indigo-600 mt-1"></i> <span>Programación de memorias BIOS (SPI Flash) con programadores CH341A / RT809.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-microchip text-indigo-600 mt-1"></i> <span>El controlador embebido KBC (Super I/O): función, señales de reset y programación.</span></div>
-                    </div>
-                </div>
-
-                <!-- Nivel 4 -->
-                <div class="bg-slate-50 border-2 border-slate-200/80 rounded-2xl p-8 hover:border-primary transition group shadow-sm hover:shadow-xl">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                        <div class="flex items-center gap-4">
-                            <span class="w-12 h-12 rounded-xl bg-slate-900 text-cyan-400 flex items-center justify-center font-black text-xl shrink-0"><i class="fas fa-fire"></i></span>
-                            <div>
-                                <span class="text-xs font-bold text-pink-600 tracking-wider uppercase">Nivel Máster</span>
-                                <h3 class="text-2xl font-bold text-secondary">Técnicas de Micro-soldadura y Reballing BGA</h3>
-                            </div>
-                        </div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-pink-100 text-pink-800 w-fit">
-                            <i class="fas fa-microscope"></i> Alta Precisión
-                        </span>
-                    </div>
-                    <p class="text-slate-600 mb-6">Destreza manual quirúrgica para soldar componentes microscópicos bajo microscopio trinocular.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-700">
-                        <div class="flex items-start gap-2.5"><i class="fas fa-temperature-high text-pink-600 mt-1"></i> <span>Calibración de aire caliente, flux profesional y aleaciones de estaño (Sn/Pb vs Lead-Free).</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-compress-arrows-alt text-pink-600 mt-1"></i> <span>Soldadura y desoldadura de componentes 0201, 0402 y circuitos QFN sin pines expuestos.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-bezier-curve text-pink-600 mt-1"></i> <span>Reconstrucción de pistas microscópicas arrancadas y puentes (jumpers) finos.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-sun text-pink-600 mt-1"></i> <span>Curado con máscara UV y luz ultravioleta para aislar pistas reparadas.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-dice-d6 text-pink-600 mt-1"></i> <span>Fundamentos de Reballing BGA: stencils de calor directo, colocación de esferas y reflujo.</span></div>
-                        <div class="flex items-start gap-2.5"><i class="fas fa-shield-virus text-pink-600 mt-1"></i> <span>Técnicas para retirar resina epóxica (underfill) sin dañar la tarjeta madre.</span></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- El Laboratorio -->
-    <section id="laboratorio" class="py-20 bg-slate-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <span class="text-primary font-bold text-sm tracking-widest uppercase">Equipamiento Profesional</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold mt-2 mb-4">Aprende con las mejores herramientas</h2>
-                <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
-                <p class="text-slate-400 mt-4 max-w-2xl mx-auto">En GlitchLab no usamos herramientas genéricas. Cada estación cuenta con el equipamiento necesario para que sientas cómo se trabaja en un centro de reparación real.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
-                    <i class="fas fa-microscope text-primary text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Microscopios Trinoculares</h3>
-                    <p class="text-slate-400 text-sm">Ópticas profesionales con cámara HDMI para visualizar soldaduras en pantalla gigante y trabajar con total nitidez.</p>
-                </div>
-                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
-                    <i class="fas fa-temperature-high text-cyan-400 text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Estaciones Térmicas JBC / Quick</h3>
-                    <p class="text-slate-400 text-sm">Control térmico de precisión milimétrica para no estresar el silicio ni levantar pistas por exceso de calor.</p>
-                </div>
-                <div class="bg-slate-800/60 border border-slate-700 p-6 rounded-2xl">
-                    <i class="fas fa-satellite-dish text-primary text-4xl mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2">Cámaras Térmicas y Osciloscopios</h3>
-                    <p class="text-slate-400 text-sm">Tecnología de detección de puntos calientes y osciloscopios de 100MHz para corroborar el estado de cada integrado.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inscripción y Contacto -->
-    <section id="inscripcion" class="py-24 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 rounded-3xl p-8 sm:p-14 text-white shadow-2xl border border-slate-700 relative overflow-hidden text-center">
-                
-                <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/20 text-primary border border-primary/30 text-xs font-mono uppercase mb-6">
-                    <i class="fas fa-calendar-alt"></i> Próximas Fechas Abiertas
-                </div>
-
-                <h2 class="text-3xl sm:text-5xl font-extrabold mb-6">¿Listo para dar el siguiente paso?</h2>
-                <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-8">
-                    Contáctanos directamente por WhatsApp para consultar las fechas del próximo grupo, horarios disponibles, costos e inscribirte.
-                </p>
-
-                <div class="bg-slate-800/80 rounded-2xl p-6 max-w-xl mx-auto border border-slate-700 mb-8 text-left text-sm space-y-2">
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-map-marker-alt text-primary text-lg"></i>
-                        <span><strong>Lugar:</strong> Calle Uruapan #2, Villas de la Paz, 63198 Tepic, Nayarit.</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-clock text-cyan-400 text-lg"></i>
-                        <span><strong>Horarios:</strong> Modalidades entre semana y sabatinos intensivos.</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-certificate text-yellow-400 text-lg"></i>
-                        <span><strong>Incluye:</strong> Constancia de participación y acceso a comunidad privada.</span>
-                    </div>
-                </div>
-
-                <!-- CTA WhatsApp -->
-                <a href="https://wa.me/5212345678900?text=Hola%20GlitchLab!%20Me%20interesa%20recibir%20información,%20fechas%20y%20costos%20sobre%20los%20Cursos%20de%20Electrónica%20y%20Microelectrónica." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xl px-10 py-5 rounded-full transition shadow-xl shadow-emerald-500/30 hover:scale-105 transform">
-                    <i class="fab fa-whatsapp text-3xl"></i> Pedir Información por WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-950 py-10 border-t border-slate-800 text-center text-slate-500 text-sm">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-microchip text-primary"></i>
-                <span class="font-bold text-white text-base">Glitch<span class="text-primary">Lab</span> Academy</span>
-            </div>
-            
-            <div class="flex gap-6 text-sm">
-                <a href="index.html" class="hover:text-primary transition">Taller de Reparación de Laptops</a>
-                <a href="#temario" class="hover:text-primary transition">Temario de Cursos</a>
-                <a href="index.html#contacto" class="hover:text-primary transition">Contacto</a>
-            </div>
-
-            <p>&copy; 2024 GlitchLab. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-</body>
-</html>
+</body></html>
